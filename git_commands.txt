@@ -118,6 +118,41 @@ also run in the parent Security folder. Both reported that the parent was not
 a Git repository; a fresh repository was then created under sga2/git-workflow.
 File creation and editing used local Python file operations, not additional Git commands.
 
+A2. INDEPENDENT REVIEW AND DOCUMENTATION UPDATE
+
+The review commands below were run read-only by the independent reviewer.
+The final two commands record this documentation update.
+
+36. git log --all --graph --decorate --oneline
+    Independently inspect the complete commit graph; equivalent to the earlier graph command.
+
+37. git log --all --format='%H %P %s'
+    Inspect full commit hashes, parent hashes and subjects to verify ordered history.
+
+38. git branch -avv
+    Inspect local branches, commit tips and any upstream information.
+
+39. git check-ignore -v debug.log temp/sample.txt
+    Probe matching ignore rules, including a hypothetical path within temp/.
+
+40. git diff --exit-code 37935bc 37d49b5
+    Verify the entire committed tree after reverting matches the pre-change tree; exit 0 confirms equality.
+
+41. git log --all --format='%h %an <%ae> | %cn <%ce>'
+    Inspect all author and committer identities for unintended personal details.
+
+42. git log --all --format= --name-only
+    List paths across tracked history to verify ignored fixtures were never committed.
+
+43. git log --all -p --format=fuller -- . ':!login_test_cases.md'
+    Inspect historical diffs and metadata for unintended content, excluding the separately designed test cases.
+
+44. git add git_commands.txt
+    Stage the expanded command documentation after independent verification.
+
+45. git commit -m 'Record independent Git verification commands'
+    Record the review commands and their explanations in the assignment repository.
+
 B. GITHUB COMMANDS - PLANNED, NOT YET EXECUTED
 
 Public repository creation and pushing await owner approval.
