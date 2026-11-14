@@ -1,0 +1,145 @@
+GIT COMMANDS - SGA 2
+====================
+
+Working directory: sga2/git-workflow
+The repository was initialized locally before any GitHub repository was created.
+Repeated commands are documented once, in order of first use. Exact outputs and
+execution order are retained in ../evidence/commands.json.
+
+A. EXECUTED LOCAL COMMANDS
+
+01. git init -b main
+    Initialize a new repository locally with main as the initial branch.
+
+02. git config --local user.name 'Assignment Student'
+    Set a neutral author name only in this assignment repository.
+
+03. git config --local user.email student@example.invalid
+    Set a non-personal placeholder author email only in this repository.
+
+04. git worktree list
+    Check the repository worktree before making changes.
+
+05. git status --short --branch
+    Display the branch and untracked HTML files before the first commit.
+
+06. git remote -v
+    Confirm that no GitHub remote exists at local initialization.
+
+07. git add index.html about.html
+    Stage the two HTML files for the initial commit.
+
+08. git commit -m 'Initial commit: add home and about pages'
+    Record the initial project state.
+
+09. git diff -- index.html
+    Show the home-page edit before recording the second commit.
+
+10. git add index.html
+    Stage the modified home page.
+
+11. git commit -m 'Update home page with workflow overview'
+    Record the second commit on main.
+
+12. git branch feature
+    Create the branch named feature at the current commit.
+
+13. git switch feature
+    Switch the working tree to feature.
+
+14. git add about.html
+    Stage the about-page change made on feature.
+
+15. git commit -m 'Add feature section to about page'
+    Record the change on the feature branch.
+
+16. git switch main
+    Return to the main branch before merging.
+
+17. git merge --no-ff feature -m 'Merge feature branch into main'
+    Merge feature with an explicit merge commit so branch activity is visible.
+
+18. git log --graph --oneline --decorate --all
+    Display all commits and the branch-and-merge graph.
+
+19. git add .gitignore
+    Stage the rules that ignore .log files and the temp directory.
+
+20. git commit -m 'Ignore log files and temp directory'
+    Record the ignore configuration.
+
+21. git check-ignore -v debug.log temp/scratch.txt
+    Show the exact ignore rule matching each demonstration file.
+
+22. git status --short --ignored
+    Confirm that the log file and temp directory are ignored.
+
+23. git commit -m 'Add temporary heading for undo demonstration'
+    Create the additional commit that will be undone.
+
+24. git show --oneline HEAD -- index.html
+    Display the additional commit and its exact change before reverting.
+
+25. git revert --no-edit HEAD
+    Undo the last commit by recording its inverse in a new commit; preserve history.
+
+26. git diff 'HEAD~2' HEAD -- index.html
+    Verify that the home page matches its state before the temporary change; no output means no difference.
+
+27. git show HEAD:index.html
+    Display the restored home-page content from the committed state.
+
+28. git rev-list --count HEAD
+    Count all commits reachable from main.
+
+29. git rev-list --parents -n 1 c7d2d5c
+    Verify that the merge commit has two parents.
+
+30. git merge-base --is-ancestor feature main
+    Verify that feature is included in main; exit status 0 confirms ancestry.
+
+31. git ls-files
+    List tracked files and confirm the ignored demonstration files are absent.
+
+32. git diff --check
+    Check for whitespace errors in outstanding changes.
+
+33. git fsck --full
+    Check the repository object database for integrity errors.
+
+34. git add git_commands.txt login_test_cases.md
+    Stage the command documentation and the designed login test cases.
+
+35. git commit -m 'Document Git commands and login test cases'
+    Record the assignment documentation in the repository.
+
+Environment preflight: git worktree list and git status --short --branch were
+also run in the parent Security folder. Both reported that the parent was not
+a Git repository; a fresh repository was then created under sga2/git-workflow.
+File creation and editing used local Python file operations, not additional Git commands.
+
+B. GITHUB COMMANDS - PLANNED, NOT YET EXECUTED
+
+Public repository creation and pushing await owner approval.
+Proposed repository name: sga2
+Create an EMPTY public GitHub repository first (after the local workflow),
+without an initial README, license, or .gitignore. Then execute:
+
+git remote add origin <PUBLIC_REPOSITORY_URL>
+    Connect this existing local repository to the empty public GitHub repository.
+
+git remote -v
+    Verify the configured fetch and push URLs.
+
+git push -u origin main feature
+    Publish both branches, preserving all local commits and setting upstreams.
+
+git ls-remote --heads origin main feature
+    Read the remote branch hashes and compare them with the local branch tips.
+
+git rev-parse main feature
+    Print the local tip hashes for main and feature for that comparison.
+
+After publication, replace this planned section with the exact commands and
+verified public URL, commit that update, and run git push origin main.
+This last push publishes the completed command documentation.
