@@ -153,28 +153,36 @@ The final two commands record this documentation update.
 45. git commit -m 'Record independent Git verification commands'
     Record the review commands and their explanations in the assignment repository.
 
-B. GITHUB COMMANDS - PLANNED, NOT YET EXECUTED
+B. EXECUTED GITHUB INTEGRATION
 
-Public repository creation and pushing await owner approval.
-Proposed repository name: sga2
-Create an EMPTY public GitHub repository first (after the local workflow),
-without an initial README, license, or .gitignore. Then execute:
+Public repository: https://github.com/siddharthachaturvedi/sga2
+Created as an empty public repository in the signed-in GitHub browser, after
+completing the local workflow. No README, license or gitignore was added on GitHub.
+Both main and feature were pushed with their complete reachable history.
 
-git remote add origin <PUBLIC_REPOSITORY_URL>
-    Connect this existing local repository to the empty public GitHub repository.
+46. git remote add origin https://github.com/siddharthachaturvedi/sga2.git
+    Connect the existing local repository to the new empty public GitHub repository.
 
-git remote -v
-    Verify the configured fetch and push URLs.
+47. git push -u origin main feature
+    Push both branches and all reachable commits to GitHub, and set upstreams.
 
-git push -u origin main feature
-    Publish both branches, preserving all local commits and setting upstreams.
+48. git ls-remote --heads origin main feature
+    Read the remote branch hashes to verify the push.
 
-git ls-remote --heads origin main feature
-    Read the remote branch hashes and compare them with the local branch tips.
+49. git rev-parse main feature
+    Read local branch hashes and compare them with the remote hashes.
 
-git rev-parse main feature
-    Print the local tip hashes for main and feature for that comparison.
+50. git commit -m 'Record public GitHub repository and push commands'
+    Record the verified public URL and the commands used for GitHub integration.
 
-After publication, replace this planned section with the exact commands and
-verified public URL, commit that update, and run git push origin main.
-This last push publishes the completed command documentation.
+51. git push origin main
+    Publish the updated command documentation while preserving the full history.
+
+Repeated commands: git remote -v checked the URLs; git add git_commands.txt
+staged this update; git status --short --branch and git log --graph --oneline
+--decorate --all checked the final local state. The two hash checks were repeated
+after the documentation push to verify both remote branch tips again.
+
+GitHub verification (GitHub CLI rather than a Git command):
+gh repo view siddharthachaturvedi/sga2 --json nameWithOwner,visibility,url,defaultBranchRef
+    Confirm the repository owner, public visibility, URL and default branch.
